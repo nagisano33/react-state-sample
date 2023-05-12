@@ -1,5 +1,5 @@
 import "./App.css";
-import { SampleBox } from "./components/SampleBox";
+import { SampleBox } from "./components/SampleBox/SampleBox";
 
 export const App = () => {
   return (
