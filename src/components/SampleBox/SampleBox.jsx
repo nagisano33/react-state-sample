@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import { ThemeProvider } from "./contexts/themeContext";
+import Header from "./Header";
 
 export const SampleBox = () => {
   return (
-    <div>SampleBox</div>
-  )
-}
+    <ThemeProvider>
+      <Header />
+    </ThemeProvider>
+  );
+};
