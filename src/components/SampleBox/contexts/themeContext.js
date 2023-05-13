@@ -1,14 +1,24 @@
-import { useState, useContext, createContext } from "react";
+import { useReducer, useContext, createContext } from "react";
 
-export const ThemeContext = createContext();
-export const ThemeUpdateContext = createContext();
+const ThemeContext = createContext();
+const ThemeUpdateContext = createContext();
+
+const reducer = (prev, type) => {
+    switch (type) {
+      case "light":
+      case "dark":
+        return type;
+      default:
+        throw new Error("不明な action です");
+    }
+  };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("light");
+    const [state, dispatch] = useReducer(reducer, "light");
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <ThemeUpdateContext.Provider value={setTheme}>
+    <ThemeContext.Provider value={state}>
+      <ThemeUpdateContext.Provider value={dispatch}>
         {children}
       </ThemeUpdateContext.Provider>
     </ThemeContext.Provider>
